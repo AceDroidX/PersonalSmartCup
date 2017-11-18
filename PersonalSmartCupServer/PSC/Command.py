@@ -1,7 +1,4 @@
-import SmartHome
 import Security
-import Door
-import Furniture
 
 
 def command(netcmd, sock, addr):
@@ -11,7 +8,7 @@ def command(netcmd, sock, addr):
     if netcmd[0] == 'keepAlive':
         sock.send('keepAlive\n'.encode('utf-8'))
         # print('--->' + addr.__str__() + '>' + 'keepAlive')
-    elif netcmd[0]=='aes256':
+    elif netcmd[0] == 'aes256':
         del netcmd[0]
         command(netcmd)
     elif netcmd[0] == 'verify':
@@ -27,16 +24,6 @@ def command(netcmd, sock, addr):
     elif netcmd[0] == 'state':
         if Security.isverify(ip):
             pass
-    elif netcmd[0] == 'door_switch':
-        if Security.isverify(ip):
-            Door.door_switch(SmartHome.pinList['door'])
-            sock.send(('door_switch ' + Door.lockstate + '\n').encode('utf-8'))
-            print('--->' + addr.__str__() + '>' + 'door_switch ' + Door.lockstate)
-    elif netcmd[0] == 'whiteLight_switch':
-        if Security.isverify(ip):
-            Furniture.whiteLight_switch(SmartHome.pinList['whiteLight'])
-            sock.send(('whiteLight_switch ' + Furniture.whiteLightState + '\n').encode('utf-8'))
-            print('--->' + addr.__str__() + '>' + 'whiteLight_switch ' + Furniture.whiteLightState)
     elif netcmd[0] == 'test':
         if Security.isverify(ip):
             pass
