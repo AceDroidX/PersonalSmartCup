@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 #-*- coding: UTF-8 -*-
 
 """
@@ -9,8 +9,8 @@
 建议在使用D2口外部中断时，不要使用D3口的输入模式
 ==================
 修改时间：2017-3-23 19:09:31
-作者：YaHei（zk）
-联系方式：929391459@qq.com
+作者：YaHei
+联系方式：hey.yahei.zk@gmail.com
 """
 
 import os

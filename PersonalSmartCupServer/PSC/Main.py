@@ -6,11 +6,10 @@ import threading
 
 import os
 
-import Door
 import TCPSocket
 
 isdebug = True
-pinList = {'t1': 3, 'p': 4, 't2': 5}
+pinList = {'t1': 3, 't2': 4, 'p': 5, }
 
 cmd = ''
 

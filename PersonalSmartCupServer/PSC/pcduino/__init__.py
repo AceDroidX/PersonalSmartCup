@@ -1,8 +1,8 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
-from .gpio import *
-from .adc import analog_read
-from .pwm import *
-from .interrupts import *
-from .myserial import Serial
+from pcduino.gpio import *
+from pcduino.adc import analog_read
+from pcduino.pwm import *
+from pcduino.interrupts import *
+from pcduino.myserial import Serial

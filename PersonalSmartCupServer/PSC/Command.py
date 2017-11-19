@@ -9,16 +9,13 @@ def command(netcmd, sock, addr):
     if netcmd[0] == 'keepAlive':
         sock.send('keepAlive\n'.encode('utf-8'))
         # print('--->' + addr.__str__() + '>' + 'keepAlive')
-    elif netcmd[0] == 'aes256':
-        del netcmd[0]
-        command(netcmd)
     elif netcmd[0] == 'verify':
         tmp = Security.verify(netcmd[1], ip)
         sock.send(('verify ' + tmp + '\n').encode('utf-8'))
         print('--->' + addr.__str__() + '>' + 'verify ' + tmp)
-    elif netcmd[0] == 'isSmartLock':
-        sock.send('SmartLock\n'.encode('utf-8'))
-        print('--->' + addr.__str__() + '>' + 'SmartLock')
+    elif netcmd[0] == 'isSmartCup':
+        sock.send('SmartCup\n'.encode('utf-8'))
+        print('--->' + addr.__str__() + '>' + 'SmartCup')
     elif netcmd[0] == 'setkey':
         if Security.isverify(addr):
             sock.send(Security.setkey(netcmd[1]).encode('utf-8'))
@@ -26,8 +23,9 @@ def command(netcmd, sock, addr):
         if Security.isverify(ip):
             pass
     elif netcmd[0] == 'readAllRecords':
-        for i in SQLite.readDrinkRecords():
-
+        tmp = ""
+        for i in SQLite.readAllDrinkRecords():
+            tmp += i
             pass
     elif netcmd[0] == 'test':
         if Security.isverify(ip):

@@ -1,15 +1,15 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
 """
 本模块用于ADC的读值
 ==================
 修改时间：2017-3-23 19:09:31
-作者：YaHei（zk）
-联系方式：929391459@qq.com
+作者：YaHei
+联系方式：hey.yahei.zk@gmail.com
 """
 
-from .pinmap import PinMap
+from pinmap import PinMap
 
 pins = PinMap('/proc', 'adc', 6)
 

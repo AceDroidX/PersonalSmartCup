@@ -1,16 +1,16 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 #-*- coding: UTF-8 -*-
 
 """
 串口控制（占用GPIO0和GPIO1）
 ==================
 修改时间：2017-4-9 15:22:15
-作者：YaHei（zk）
-联系方式：929391459@qq.com
+作者：YaHei
+联系方式：hey.yahei.zk@gmail.com
 """
 
 import serial
-from .gpio import *
+from gpio import *
 
 class Serial(object):
   "串口类"

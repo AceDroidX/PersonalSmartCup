@@ -1,16 +1,15 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
 """
 本模块用于实现引脚、文件之间的映射关系（库内部使用）
 ==================
-修改时间：2017-3-23 19:09:31
-作者：YaHei（zk）
-联系方式：929391459@qq.com
+修改时间：2017-3-30 20:43:51
+作者：YaHei
+联系方式：hey.yahei.zk@gmail.com
 """
 
 import os.path
-
 
 class InvalidChannelException(ValueError):
     """The channel sent was invalid."""

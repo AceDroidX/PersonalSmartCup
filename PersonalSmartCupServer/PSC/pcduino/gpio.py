@@ -1,18 +1,18 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
 """
 本模块用于GPIO的控制
 ==================
 修改时间：2017-3-23 19:09:31
-作者：YaHei（zk）
-联系方式：929391459@qq.com
+作者：YaHei
+联系方式：hey.yahei.zk@gmail.com
 """
 
-from .pinmap import PinMap
+from pinmap import PinMap
 
 
-__all__ = ['HIGH', 'LOW', 'INPUT', 'OUTPUT','PWM','UART' ,'digital_write', 'digital_read',
+__all__ = ['HIGH', 'LOW', 'INPUT', 'OUTPUT','PWM','UART', 'digital_write', 'digital_read',
            "pin_mode"]
 
 HIGH = 1
@@ -25,13 +25,13 @@ UART = 3
 gpio_pins = PinMap(
     '/sys/devices/virtual/misc/gpio/pin',
     'gpio',
-    20
+    24
 )
 
 gpio_mode_pins = PinMap(
     '/sys/devices/virtual/misc/gpio/mode/',
     'gpio',
-    20
+    24
 )
 
 def digital_write(channel, value):
