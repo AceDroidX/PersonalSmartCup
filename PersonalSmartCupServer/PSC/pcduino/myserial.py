@@ -9,8 +9,7 @@
 联系方式：hey.yahei.zk@gmail.com
 """
 
-import serial
-from gpio import *
+from pcduino.gpio import *
 
 class Serial(object):
   "串口类"

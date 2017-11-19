@@ -9,7 +9,7 @@
 联系方式：hey.yahei.zk@gmail.com
 """
 
-from pinmap import PinMap
+from pcduino.pinmap import PinMap
 
 pins = PinMap('/proc', 'adc', 6)
 
