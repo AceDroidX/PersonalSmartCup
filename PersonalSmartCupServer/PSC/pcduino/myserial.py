@@ -8,7 +8,7 @@
 作者：YaHei
 联系方式：hey.yahei.zk@gmail.com
 """
-
+import serial
 from pcduino.gpio import *
 
 class Serial(object):

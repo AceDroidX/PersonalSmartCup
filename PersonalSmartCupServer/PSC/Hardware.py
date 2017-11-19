@@ -10,7 +10,7 @@ def startSerial():
     serial.__init__()
     temp = ""
     while True:
-        temp += serial.read_all()
+        temp += serial.read_all().decode()
         cmd = temp.split("\n")
         temp = cmd[len(cmd) - 1]
         for i in cmd:
