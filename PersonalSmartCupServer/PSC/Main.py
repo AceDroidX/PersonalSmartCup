@@ -10,8 +10,7 @@ import Door
 import TCPSocket
 
 isdebug = True
-pinList = {'bigLight': 3, 'fanB': 5, 'door': 6, 'whiteLight': 7,
-           'RGBLightR': 9, 'RGBLightB': 10, 'RGBLightG': 11}
+pinList = {'t1': 3, 'p': 4, 't2': 5}
 
 cmd = ''
 
@@ -40,6 +39,7 @@ def doortest1():
 def updateTime():
     print('开始对时')
     os.system('sudo ntpdate -u ntp.api.bz')
+
 
 # -----------------------------
 
@@ -71,7 +71,7 @@ if __name__ == '__main__':
             doortest1()
         elif cmd == 'doorswitch':
             Door.door_switch(pinList['door'])
-        elif cmd=='updatetime':
+        elif cmd == 'updatetime':
             timeThread = threading.Thread(target=updateTime())
             timeThread.start()
         elif cmd == '':

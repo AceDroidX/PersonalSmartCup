@@ -1,3 +1,4 @@
+import SQLite
 import Security
 
 
@@ -23,6 +24,10 @@ def command(netcmd, sock, addr):
             sock.send(Security.setkey(netcmd[1]).encode('utf-8'))
     elif netcmd[0] == 'state':
         if Security.isverify(ip):
+            pass
+    elif netcmd[0] == 'readAllRecords':
+        for i in SQLite.readDrinkRecords():
+
             pass
     elif netcmd[0] == 'test':
         if Security.isverify(ip):

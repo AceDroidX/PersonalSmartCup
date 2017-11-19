@@ -1,16 +1,23 @@
 import sqlite3
 
 import os
+import time
 
 path = os.path.split(os.path.realpath(__file__))[0]
-accountsfile = path + '/Accounts.db'
+datafile = path + '/data.db'
 
 
-def regAccounts(name, password):
-    reg = sqlite3.connect(accountsfile)
-    reg.execute('''CREATE TABLE IF NOT EXISTS users 
-           (id INTEGER PRIMARY KEY      NOT NULL,
-           name           TEXT          NOT NULL UNIQUE,
-           password       TEXT          NOT NULL);''')
-    idcursor = reg.execute("SELECT id FROM users ORDER BY id DESC;")
-    insertcursor = reg.execute("INSERT INTO users VALUES (" + idcursor[0] + ");")
+def addDrinkRecords(waterVolume):
+    reg = sqlite3.connect(datafile)
+    reg.execute('''CREATE TABLE IF NOT EXISTS drinkRecords 
+           (time INTEGER PRIMARY KEY      NOT NULL,
+           volume           INTEGER          NOT NULL);''')
+    insertcursor = reg.execute("INSERT INTO drinkRecords VALUES (?);", (time.time(), waterVolume))
+
+
+def readAllDrinkRecords():
+    reg = sqlite3.connect(datafile)
+    reg.execute('''CREATE TABLE IF NOT EXISTS drinkRecords 
+               (time INTEGER PRIMARY KEY      NOT NULL,
+               volume           INTEGER          NOT NULL);''')
+    return reg.execute("SELECT * FROM drinkRecords;").fetchall()
