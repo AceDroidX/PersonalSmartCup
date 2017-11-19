@@ -34,6 +34,9 @@ def startSerial():
                     print(temp2)
 
 
+def startHardware():
+    startSerial()
+
 if __name__ == '__main__':
     #    s = Serial()
     #    s.__init__()

@@ -7,6 +7,7 @@ import threading
 import os
 
 import TCPSocket
+import Hardware
 
 isdebug = True
 pinList = {'t1': 3, 't2': 4, 'p': 5, }
@@ -40,6 +41,10 @@ def updateTime():
     os.system('sudo ntpdate -u ntp.api.bz')
 
 
+def startS():
+    Hardware.startHardware()
+
+
 # -----------------------------
 
 if __name__ == '__main__':
@@ -50,6 +55,8 @@ if __name__ == '__main__':
     about()
     timeThread = threading.Thread(target=updateTime())
     timeThread.start()
+    serialThread = threading.Thread(target=startS())
+    serialThread.start()
     print("SmartHome已启动\n控制台帮助请输入help")
     # ----------------------------
 
