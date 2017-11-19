@@ -1,3 +1,5 @@
+import threading
+
 from pcduino.myserial import *
 
 weight = 0
@@ -27,7 +29,8 @@ def startSerial():
 
 
 if __name__ == '__main__':
-    startSerial()
+    timeThread = threading.Thread(target=startSerial())
+    timeThread.start()
     while True:
         print('weight:?', weight)
         print('temp1:?', temp1)
