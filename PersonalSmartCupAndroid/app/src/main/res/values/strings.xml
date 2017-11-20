@@ -26,4 +26,5 @@
     <string name="whiteLight">白灯开关</string>
     <string name="passwordEditHint">密码</string>
     <string name="title_activity_history">HistoryActivity</string>
+    <string name="title_activity_alarm">AlarmActivity</string>
 </resources>

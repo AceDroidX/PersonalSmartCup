@@ -28,7 +28,7 @@ public class TCPSocket {
     Context context = null;
     Activity activity;
     TCPrecv tcprecv;
-    String type;
+    String type = "unknown";
 
     TCPSocket(Activity a, String type) {
         activity = a;
@@ -45,12 +45,29 @@ public class TCPSocket {
         context = a.getApplicationContext();
     }
 
+    boolean isConnected(){
+        if(client==null){
+            return false;
+        }
+        return client.isConnected();
+    }
+
     void send(String str, int MaxTimeOutms) {
         try {
             if (MaxTimeOutms == 0) {
                 MaxTimeOutms = client.getSoTimeout();
             }
             if (!"keepAlive".equals(str)) Log.d("wxxDebug", "send:" + str);
+            if (client == null || out == null) {
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(context.getApplicationContext(), "socket是null",
+                                Toast.LENGTH_LONG).show();
+                    }
+                });
+                return;
+            }
             client.setSoTimeout(MaxTimeOutms);
             out.writeBytes(str);
         } catch (IOException e) {
@@ -67,10 +84,10 @@ public class TCPSocket {
 
     void recv() {
         if (context == null) {
-            tcprecv = new TCPrecv(out, input, client,this,type);
+            tcprecv = new TCPrecv(out, input, client, this, type);
             tcprecv.recv();
         } else {
-            tcprecv = new TCPrecv(out, input, client,this,type, activity);
+            tcprecv = new TCPrecv(out, input, client, this, type, activity);
             tcprecv.recv();
         }
     }

@@ -16,6 +16,15 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        final TCPSocket MainSocket = new TCPSocket(LoginActivity.this);
+        MainSocket.connect("192.168.43.234",23333,"verify", 5000);
+
+        Intent intent = new Intent();
+        //intent.putExtra("type",type+"/"+l);
+        intent.setClass(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
+
+        ////////////////////////////////////////////////////////////////////
         setContentView(R.layout.activity_login);
 
         //------------------------------------------------------------------

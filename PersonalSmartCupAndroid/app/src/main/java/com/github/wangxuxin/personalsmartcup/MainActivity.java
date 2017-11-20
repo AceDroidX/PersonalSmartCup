@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,17 +15,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final TCPSocket historySocket = new TCPSocket(MainActivity.this);
-        historySocket.connect("192.168.43.234",23333,"verify", 5000);
+        TextView stateText=(TextView)findViewById(R.id.stateText);
+        final TCPSocket MainSocket = new TCPSocket(MainActivity.this);
+        if(MainSocket.isConnected()){
+            stateText.setText("已连接");
+        }else {
+            stateText.setText("未连接");
+        }
+
 
         Button historyButton = (Button)findViewById(R.id.historyButton);
         historyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
-                //intent.putExtra("type",type+"/"+l);
-                intent.setClass(getApplicationContext(), HistoryActivity.class);
-                startActivity(intent);
+                if(MainSocket.isConnected()){
+                    Intent intent = new Intent();
+                    //intent.putExtra("type",type+"/"+l);
+                    intent.setClass(getApplicationContext(), HistoryActivity.class);
+                    startActivity(intent);
+                }else {
+                    Toast.makeText(getApplicationContext(), "未连接！",
+                            Toast.LENGTH_LONG).show();
+                }
             }
         });
 
