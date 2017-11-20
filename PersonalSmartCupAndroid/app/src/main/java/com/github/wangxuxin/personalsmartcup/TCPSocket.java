@@ -28,13 +28,15 @@ public class TCPSocket {
     Context context = null;
     Activity activity;
     TCPrecv tcprecv;
+    String type;
 
-    TCPSocket(Activity a ,int get) {
+    TCPSocket(Activity a, String type) {
         activity = a;
         context = a.getApplicationContext();
-        this.client = ((MySocket)activity.getApplication()).getSocket();
-        this.out = ((MySocket)activity.getApplication()).getOut();
-        this.input = ((MySocket)activity.getApplication()).getInput();
+        this.client = ((MySocket) activity.getApplication()).getSocket();
+        this.out = ((MySocket) activity.getApplication()).getOut();
+        this.input = ((MySocket) activity.getApplication()).getInput();
+        this.type = type;
     }
 
     TCPSocket(Activity a) {
@@ -48,7 +50,7 @@ public class TCPSocket {
             if (MaxTimeOutms == 0) {
                 MaxTimeOutms = client.getSoTimeout();
             }
-            if(!"keepAlive".equals(str)) Log.d("wxxDebug", "send:" + str);
+            if (!"keepAlive".equals(str)) Log.d("wxxDebug", "send:" + str);
             client.setSoTimeout(MaxTimeOutms);
             out.writeBytes(str);
         } catch (IOException e) {
@@ -65,10 +67,10 @@ public class TCPSocket {
 
     void recv() {
         if (context == null) {
-            tcprecv = new TCPrecv(out, input, client, this);
+            tcprecv = new TCPrecv(out, input, client,this,type);
             tcprecv.recv();
         } else {
-            tcprecv = new TCPrecv(out, input, client, this, activity);
+            tcprecv = new TCPrecv(out, input, client,this,type, activity);
             tcprecv.recv();
         }
     }
@@ -95,7 +97,7 @@ public class TCPSocket {
     }
 
     void connect(final String name, final int port, final String str, final int MaxTimeOutms) {
-        if(client!=null&&client.isConnected()){
+        if (client != null && client.isConnected()) {
             activity.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {

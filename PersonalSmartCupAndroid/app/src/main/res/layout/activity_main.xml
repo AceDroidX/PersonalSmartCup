@@ -7,4 +7,13 @@
         android:layout_height="match_parent"
         tools:context="com.github.wangxuxin.personalsmartcup.MainActivity">
 
+    <Button
+            android:text="喝水历史"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" tools:layout_editor_absoluteY="446dp"
+            tools:layout_editor_absoluteX="8dp" android:id="@+id/historyButton"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" tools:layout_editor_absoluteY="213dp"
+            tools:layout_editor_absoluteX="164dp" android:id="@+id/textView6" android:text="@string/app_name_chs"/>
 </android.support.constraint.ConstraintLayout>

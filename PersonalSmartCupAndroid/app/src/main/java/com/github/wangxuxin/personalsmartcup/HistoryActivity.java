@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.LinearLayout;
 
 public class HistoryActivity extends AppCompatActivity {
 
@@ -25,6 +26,9 @@ public class HistoryActivity extends AppCompatActivity {
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        final TCPSocket historySocket = new TCPSocket(HistoryActivity.this,"history");
+        historySocket.send("", 5000);
     }
 
 }

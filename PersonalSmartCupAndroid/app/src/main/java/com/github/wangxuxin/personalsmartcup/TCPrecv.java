@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -23,19 +24,22 @@ public class TCPrecv {
     Context context = null;
     View view = null;
     Activity activity;
+    String type;
 
-    TCPrecv(DataOutputStream o, BufferedReader i, Socket c, TCPSocket t) {
+    TCPrecv(DataOutputStream o, BufferedReader i, Socket c, TCPSocket t,String type) {
         out = o;
         input = i;
         client = c;
         tcpsocket = t;
+        this.type = type;
     }
 
-    TCPrecv(DataOutputStream o, BufferedReader i, Socket c, TCPSocket t, Activity a) {
+    TCPrecv(DataOutputStream o, BufferedReader i, Socket c, TCPSocket t,String type, Activity a) {
         out = o;
         input = i;
         client = c;
         tcpsocket = t;
+        this.type = type;
         activity = a;
 
         context = a.getApplicationContext();
@@ -108,8 +112,11 @@ public class TCPrecv {
     }
 
     void readAllRecords() {
-        for (String str : cmd) {
-
+        if("history".equals(type)){
+            LinearLayout llhistory = (LinearLayout)activity.findViewById(R.id.llhistory);
+        }
+        else {
+            makeToastOnUI("未知程序调用readallrecords",Toast.LENGTH_LONG);
         }
     }
 
@@ -173,7 +180,7 @@ public class TCPrecv {
             //4、完成提交
             editor.apply();
 
-            activity.setContentView(R.layout.activity_lock);
+            activity.setContentView(R.layout.activity_init);
         } else {
             makeToastOnUI("连接超时", Toast.LENGTH_LONG);
         }

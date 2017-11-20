@@ -32,7 +32,10 @@ def startSerial():
                 elif t1[0] == "temp2":
                     temp2 = t1[1]
                     print(temp2)
+                detectHardware()
 
+def detectHardware():
+    pass
 
 def startHardware():
     startSerial()

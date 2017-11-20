@@ -9,4 +9,19 @@
         tools:showIn="@layout/activity_history"
         tools:context="com.github.wangxuxin.personalsmartcup.HistoryActivity">
 
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="368dp"
+            android:layout_height="495dp" tools:layout_editor_absoluteY="8dp" tools:layout_editor_absoluteX="8dp">
+        <TextView
+                android:text="历史记录"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView10"
+                android:textAppearance="@style/TextAppearance.AppCompat" android:gravity="top|center"/>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:layout_weight="1" android:id="@+id/llhistory">
+        </LinearLayout>
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>
