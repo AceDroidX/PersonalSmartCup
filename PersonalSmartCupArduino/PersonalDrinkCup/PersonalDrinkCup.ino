@@ -1,7 +1,15 @@
+String cdata = "";
+String cmd[100];
+unsigned long previousMillis = 0;
+int isdebug=0;
+
 // 电子秤ADC（HX771AD）对应的引脚号
 const int VT  = 11;
 const int WSCK = 12;
 
+const int light1=2//电热器指示灯
+const int light2=3//红 水是否能喝
+const int light3=4//绿 同上
 const int temp1=A3;//杯温
 const int temp2=A4;//水温
 int delaytime=1000;
@@ -39,14 +47,7 @@ int gettemp(int io){
   return analogRead(io)*330/1023;
 }
 
-void setup() {
-  pinMode(VT,  INPUT);
-  pinMode(WSCK, OUTPUT);
-  // 串口初始化，波特率9600
-  Serial.begin(9600);
-}
-
-void loop() {
+void sendSerial(){
   Serial.print("weight:");
   Serial.print(getweigh());
   Serial.print(" ");
@@ -56,5 +57,63 @@ void loop() {
   Serial.print("temp2:");
   Serial.print(gettemp(temp2));
   Serial.print("\n");
-  delay(delaytime);
+}
+
+void setup() {
+  pinMode(VT,  INPUT);
+  pinMode(WSCK, OUTPUT);
+  pinMode(2,OUTPUT);
+  pinMode(3,OUTPUT);
+  pinMode(4,OUTPUT);
+  // 串口初始化，波特率9600
+  Serial.begin(9600);
+}
+
+void loop() {
+  unsigned long currentMillis = millis();
+  if(currentMillis-previousMillis>=delaytime){
+    sendSerial();
+  }
+
+  while (Serial.available() > 0)  
+    {
+        cdata += char(Serial.read());
+        delay(2);
+    }
+  char delims[] = " ";
+  char *result = NULL;
+  int i = 0;
+  result = strtok( cdata.c_str(), delims );
+  while( result != NULL ) {
+    cmd[i]=result;
+    i++;
+    result = strtok( NULL, delims );
+  }
+  if(isdebug&&cmd[0]!=""){
+    Serial.println(cmd[0]);
+  }
+
+  if(cmd[0]=="temp1high"){
+    
+  }
+  if(cmd[0]=="temp1ok"){
+    
+  }
+  if(cmd[0]=="temp2ok"){
+    
+  }
+  if(cmd[0]=="temp2low"){
+    
+  }
+  
+  cleanVar();
+}
+
+void cleanVar(){
+  cdata="";
+  if(cmd[0]!=""){
+    for(int i=0;i<=100;i++){
+      cmd[i]="";
+    }
+  }
 }

@@ -40,13 +40,13 @@ def startSerial():
 
 def detectHardware():
     if temp1 > 40:
-        serial.write_string('temp1 high')
+        serial.write_string('temp1high')
     else:
-        serial.write_string('temp1 ok')
+        serial.write_string('temp1ok')
     if temp2 > 60:  # 需要修改 尽量烫
-        serial.write_string('temp2 ok')
+        serial.write_string('temp2ok')
     else:
-        serial.write_string('temp2 low')
+        serial.write_string('temp2low')
 
 
 def startHardware():
