@@ -10,7 +10,7 @@ def command(netcmd, sock, addr):
         sock.send('keepAlive\n'.encode('utf-8'))
         # print('--->' + addr.__str__() + '>' + 'keepAlive')
     elif netcmd[0] == 'verify':
-        tmp = Security.verify(netcmd[1], ip)
+        tmp = Security.verify()
         sock.send(('verify ' + tmp + '\n').encode('utf-8'))
         print('--->' + addr.__str__() + '>' + 'verify ' + tmp)
     # elif netcmd[0] == 'isSmartCup':

@@ -16,15 +16,6 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        final TCPSocket MainSocket = new TCPSocket(LoginActivity.this);
-        MainSocket.connect("192.168.43.234",23333,"verify", 5000);
-
-        Intent intent = new Intent();
-        //intent.putExtra("type",type+"/"+l);
-        intent.setClass(getApplicationContext(), MainActivity.class);
-        startActivity(intent);
-
-        ////////////////////////////////////////////////////////////////////
         setContentView(R.layout.activity_login);
 
         //------------------------------------------------------------------
@@ -32,14 +23,11 @@ public class LoginActivity extends AppCompatActivity {
         //------------------------------------------------------------------
         SharedPreferences locklistSP = getSharedPreferences("lock", 0);
         final String lockip = locklistSP.getString("ip", null);
-        String lockpw = locklistSP.getString("password", null);
 
         final EditText ipEdit = (EditText) findViewById(R.id.ipEdit);
-        final EditText passwordEdit = (EditText) findViewById(R.id.passwordEdit);
 
-        if (!(lockip == null || lockpw == null)) {
+        if (!(lockip == null)) {
             ipEdit.setText(lockip);
-            passwordEdit.setText(lockpw);
         }
         //------------------------------------------------------------------
         //------------------------------------------------------------------
@@ -57,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
                 final TCPSocket password = new TCPSocket(LoginActivity.this);
-                password.connect(ipEdit.getText().toString(), 23333, "verify " + passwordEdit.getText().toString(), 5000);
+                password.connect(ipEdit.getText().toString(), 23333, "verify", 5000);
             }
         });
 

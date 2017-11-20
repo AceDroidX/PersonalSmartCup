@@ -49,6 +49,7 @@ public class TCPSocket {
         if(client==null){
             return false;
         }
+        //Log.d("wxxDebug","连接状态"+client.isConnected());
         return client.isConnected();
     }
 
@@ -98,8 +99,8 @@ public class TCPSocket {
             public void run() {
                 while (true) {
                     try {
-                        send("keepAlive", client.getSoTimeout());
                         sleep(client.getSoTimeout() / 2);
+                        send("keepAlive", client.getSoTimeout());
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

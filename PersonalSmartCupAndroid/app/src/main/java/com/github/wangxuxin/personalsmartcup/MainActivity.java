@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         TextView stateText=(TextView)findViewById(R.id.stateText);
-        final TCPSocket MainSocket = new TCPSocket(MainActivity.this);
+        final TCPSocket MainSocket = new TCPSocket(MainActivity.this,"main");
         if(MainSocket.isConnected()){
             stateText.setText("已连接");
         }else {

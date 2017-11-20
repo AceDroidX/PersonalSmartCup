@@ -66,5 +66,5 @@ def isverify(ip, remove=False):
     return True
 
 
-def verify(user, key, ip):
+def verify():
     return 'keycorrect'

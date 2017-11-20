@@ -1,17 +1,20 @@
+# coding=utf-8
 import threading
 
 from pcduino.myserial import *
 import time
 
 weight = 0
-temp1 = 0
-temp2 = 0
+temp1 = 0  # 杯温
+temp2 = 0  # 水温
+
+serial = None
 
 
 def startSerial():
+    global serial
     serial = Serial()
     serial.__init__()
-    temp = ""
     while True:
         cmd = serial.read_all().decode()
         if not cmd == "":
@@ -36,7 +39,14 @@ def startSerial():
 
 
 def detectHardware():
-    pass
+    if temp1 > 40:
+        serial.write_string('temp1 high')
+    else:
+        serial.write_string('temp1 ok')
+    if temp2 > 60:  # 需要修改 尽量烫
+        serial.write_string('temp2 ok')
+    else:
+        serial.write_string('temp2 low')
 
 
 def startHardware():

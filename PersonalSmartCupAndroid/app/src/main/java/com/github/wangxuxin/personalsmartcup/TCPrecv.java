@@ -132,7 +132,6 @@ public class TCPrecv {
             return;
         }
         final EditText ipEdit = (EditText) view.findViewById(R.id.ipEdit);
-        final EditText passwordEdit = (EditText) view.findViewById(R.id.passwordEdit);
         if ("notInitialize".equals(cmd[1])) {
             makeToastOnUI("进入设置模式", Toast.LENGTH_LONG);
             //1、打开Preferences，名称为setting，如果存在则打开它，否则创建新的Preferences
@@ -156,7 +155,6 @@ public class TCPrecv {
             SharedPreferences.Editor editor = isFirstOpen.edit();
             //3、存放数据
             editor.putString("ip", ipEdit.getText().toString());
-            editor.putString("password", passwordEdit.getText().toString());
             //4、完成提交
             editor.apply();
 

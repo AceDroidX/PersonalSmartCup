@@ -28,7 +28,7 @@ public class HistoryActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         final TCPSocket historySocket = new TCPSocket(HistoryActivity.this,"history");
-        historySocket.send("", 5000);
+        historySocket.send("readAllRecords", 5000);
     }
 
 }

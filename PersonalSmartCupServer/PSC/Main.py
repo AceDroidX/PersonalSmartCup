@@ -10,7 +10,6 @@ import TCPSocket
 import Hardware
 
 isdebug = True
-pinList = {'t1': 3, 't2': 4, 'p': 5, }
 
 cmd = ''
 
@@ -73,10 +72,6 @@ if __name__ == '__main__':
             stop()
         elif cmd == "about" or cmd == "version":
             about()
-        elif cmd == "doortest1":
-            doortest1()
-        elif cmd == 'doorswitch':
-            Door.door_switch(pinList['door'])
         elif cmd == 'updatetime':
             timeThread = threading.Thread(target=updateTime())
             timeThread.start()
