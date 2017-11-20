@@ -23,10 +23,16 @@ def command(netcmd, sock, addr):
         if Security.isverify(ip):
             pass
     elif netcmd[0] == 'readAllRecords':
-        tmp = ""
-        for i in SQLite.readAllDrinkRecords():
-            tmp += i
-            pass
+        tmp = "readAllRecords "
+        for t in SQLite.readAllDrinkRecords():
+            for i in t:
+                tmp += i
+                tmp += ','
+            tmp += ' '
+        sock.send(tmp.encode('utf-8'))
+        print('--->' + addr.__str__() + '>' + tmp)
+    elif netcmd[0] == 'readRecords':
+        pass
     elif netcmd[0] == 'test':
         if Security.isverify(ip):
             pass

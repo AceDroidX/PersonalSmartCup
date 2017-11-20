@@ -25,4 +25,5 @@
     <string name="setkeyinfo">填10位整数</string>
     <string name="whiteLight">白灯开关</string>
     <string name="passwordEditHint">密码</string>
+    <string name="title_activity_history">HistoryActivity</string>
 </resources>

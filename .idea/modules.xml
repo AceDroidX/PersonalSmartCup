@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/PersonalSmartCupServer.iml" filepath="$PROJECT_DIR$/.idea/PersonalSmartCupServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/PersonalSmartCup.iml" filepath="$PROJECT_DIR$/.idea/PersonalSmartCup.iml" />
     </modules>
   </component>
 </project>

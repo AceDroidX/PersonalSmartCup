@@ -10,14 +10,26 @@ datafile = path + '/data.db'
 def addDrinkRecords(waterVolume):
     reg = sqlite3.connect(datafile)
     reg.execute('''CREATE TABLE IF NOT EXISTS drinkRecords 
-           (time INTEGER PRIMARY KEY      NOT NULL,
+           (time NUMERIC PRIMARY KEY      NOT NULL,
            volume           INTEGER          NOT NULL);''')
-    insertcursor = reg.execute("INSERT INTO drinkRecords VALUES (?);", (time.time(), waterVolume))
+    insertcursor = reg.execute("INSERT INTO drinkRecords VALUES (?,?);", (time.time(), waterVolume))
+    reg.commit()
+    reg.close()
 
 
 def readAllDrinkRecords():
     reg = sqlite3.connect(datafile)
     reg.execute('''CREATE TABLE IF NOT EXISTS drinkRecords 
-               (time INTEGER PRIMARY KEY      NOT NULL,
+               (time NUMERIC PRIMARY KEY      NOT NULL,
                volume           INTEGER          NOT NULL);''')
-    return reg.execute("SELECT * FROM drinkRecords;").fetchall()
+    t = reg.execute("SELECT * FROM drinkRecords;").fetchall()
+    reg.commit()
+    reg.close()
+    return t
+
+if __name__ == '__main__':
+    addDrinkRecords(1000)
+    addDrinkRecords(2000)
+    addDrinkRecords(3000)
+    addDrinkRecords(100)
+    print(readAllDrinkRecords())

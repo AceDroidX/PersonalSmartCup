@@ -63,7 +63,7 @@ public class TCPrecv {
         try {
             while (client.isConnected()) {
                 String tmp = input.readLine();
-                if(!"keepAlive".equals(tmp)) Log.d("wxxDebug", "echo:" + tmp);
+                if (!"keepAlive".equals(tmp)) Log.d("wxxDebug", "echo:" + tmp);
                 cmd = tmp.split(" ");
                 if ("keepAlive".equals(cmd[0])) {
                     continue;
@@ -79,8 +79,8 @@ public class TCPrecv {
                 } else if ("notInitialize".equals(cmd[0])) {
                     makeToastOnUI("没有初始化", Toast.LENGTH_LONG);
                     continue;
-                }else if("keywrong".equals(cmd[1])){
-                    makeToastOnUI("密码错误",Toast.LENGTH_LONG);
+                } else if ("keywrong".equals(cmd[1])) {
+                    makeToastOnUI("密码错误", Toast.LENGTH_LONG);
                 }
 
                 if ("verify".equals(cmd[0])) {
@@ -93,6 +93,8 @@ public class TCPrecv {
                     resetType();
                 } else if ("whiteLight_switch".equals(cmd[0])) {
                     whiteLightSwitchType();
+                } else if ("readAllRecords".equals(cmd[0])) {
+                    readAllRecords();
                 } else {
                     Log.d("wxxDebug", "未知数据类型" + cmd[0]);
                 }
@@ -102,6 +104,12 @@ public class TCPrecv {
         } catch (Exception e) {
             e.printStackTrace();
             makeToastOnUI("连接已断开:recv", Toast.LENGTH_LONG);
+        }
+    }
+
+    void readAllRecords() {
+        for (String str : cmd) {
+
         }
     }
 
@@ -125,7 +133,7 @@ public class TCPrecv {
 
             Intent intent = new Intent();
             intent.putExtra("type", "1");
-            intent.setClass(context, LockActivity.class);
+            intent.setClass(context, MainActivity.class);
             activity.startActivity(intent);
         } else if ("keycorrect".equals(cmd[1])) {
             makeToastOnUI("连接成功", Toast.LENGTH_SHORT);
@@ -141,7 +149,7 @@ public class TCPrecv {
 
             Intent intent = new Intent();
             //intent.putExtra("type",type+"/"+l);
-            intent.setClass(context, LockActivity.class);
+            intent.setClass(context, MainActivity.class);
             activity.startActivity(intent);
         } else {
             makeToastOnUI("未知错误", Toast.LENGTH_LONG);
