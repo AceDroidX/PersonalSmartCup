@@ -114,9 +114,9 @@ public class TCPrecv {
     void readAllRecords() {
         if ("history".equals(type)) {
             LinearLayout llhistory = (LinearLayout) activity.findViewById(R.id.llhistory);
-            int i=0;
+            int i = 0;
             for (String str : cmd) {
-                if (i==0) {
+                if (i == 0) {
                     i++;
                     continue;
                 }
