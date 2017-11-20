@@ -26,7 +26,7 @@ public class TCPrecv {
     Activity activity;
     String type;
 
-    TCPrecv(DataOutputStream o, BufferedReader i, Socket c, TCPSocket t,String type) {
+    TCPrecv(DataOutputStream o, BufferedReader i, Socket c, TCPSocket t, String type) {
         out = o;
         input = i;
         client = c;
@@ -34,7 +34,7 @@ public class TCPrecv {
         this.type = type;
     }
 
-    TCPrecv(DataOutputStream o, BufferedReader i, Socket c, TCPSocket t,String type, Activity a) {
+    TCPrecv(DataOutputStream o, BufferedReader i, Socket c, TCPSocket t, String type, Activity a) {
         out = o;
         input = i;
         client = c;
@@ -112,11 +112,17 @@ public class TCPrecv {
     }
 
     void readAllRecords() {
-        if("history".equals(type)){
-            LinearLayout llhistory = (LinearLayout)activity.findViewById(R.id.llhistory);
-        }
-        else {
-            makeToastOnUI("未知程序调用readallrecords",Toast.LENGTH_LONG);
+        if ("history".equals(type)) {
+            LinearLayout llhistory = (LinearLayout) activity.findViewById(R.id.llhistory);
+            int i=0;
+            for (String str : cmd) {
+                if (i==0) {
+                    i++;
+                    continue;
+                }
+            }
+        } else {
+            makeToastOnUI("未知程序调用readallrecords", Toast.LENGTH_LONG);
         }
     }
 

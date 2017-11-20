@@ -62,9 +62,9 @@ verifiedIPs = []
 #     else:
 #         return tmp
 
-def isverify():
+def isverify(ip, remove=False):
     return True
 
 
-def verify():
+def verify(user, key, ip):
     return 'keycorrect'

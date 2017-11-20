@@ -34,11 +34,14 @@ def startSerial():
                     print(temp2)
                 detectHardware()
 
+
 def detectHardware():
     pass
 
+
 def startHardware():
     startSerial()
+
 
 if __name__ == '__main__':
     #    s = Serial()

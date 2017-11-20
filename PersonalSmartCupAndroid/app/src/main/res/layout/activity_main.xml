@@ -7,13 +7,34 @@
         android:layout_height="match_parent"
         tools:context="com.github.wangxuxin.personalsmartcup.MainActivity">
 
-    <Button
-            android:text="喝水历史"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" tools:layout_editor_absoluteY="446dp"
-            tools:layout_editor_absoluteX="8dp" android:id="@+id/historyButton"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" tools:layout_editor_absoluteY="213dp"
-            tools:layout_editor_absoluteX="164dp" android:id="@+id/textView6" android:text="@string/app_name_chs"/>
+    <RelativeLayout
+            android:layout_width="368dp"
+            android:layout_height="495dp" tools:layout_editor_absoluteY="8dp"
+            tools:layout_editor_absoluteX="8dp">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" tools:layout_editor_absoluteY="142dp"
+                tools:layout_editor_absoluteX="124dp" android:id="@+id/textView6" android:text="@string/app_name_chs"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:layout_above="@+id/button2" android:layout_centerHorizontal="true"/>
+        <Button
+                android:text="关于作者"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" tools:layout_editor_absoluteY="279dp"
+                tools:layout_editor_absoluteX="148dp" android:id="@+id/aboutMain"
+                android:layout_below="@+id/historyButton" android:layout_alignStart="@+id/historyButton"/>
+        <Button
+                android:text="喝水历史"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" tools:layout_editor_absoluteY="183dp"
+                tools:layout_editor_absoluteX="148dp" android:id="@+id/historyButton"
+                android:layout_below="@+id/button2" android:layout_alignStart="@+id/button2"/>
+        <Button
+                android:text="喝水提醒"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" tools:layout_editor_absoluteY="231dp"
+                tools:layout_editor_absoluteX="148dp" android:id="@+id/button2"
+                android:layout_centerVertical="true" android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
