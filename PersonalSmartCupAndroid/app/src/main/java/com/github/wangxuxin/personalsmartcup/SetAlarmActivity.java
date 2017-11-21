@@ -7,14 +7,13 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Button;
 
-public class AlarmActivity extends AppCompatActivity {
+public class SetAlarmActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_alarm);
+        setContentView(R.layout.activity_set_alarm);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -28,16 +27,7 @@ public class AlarmActivity extends AppCompatActivity {
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Button setAlarm=(Button)findViewById(R.id.setAlarm);
-        setAlarm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent();
-                //intent.putExtra("type",type+"/"+l);
-                intent.setClass(getApplicationContext(), SetAlarmActivity.class);
-                startActivity(intent);
-            }
-        });
+
     }
 
 }

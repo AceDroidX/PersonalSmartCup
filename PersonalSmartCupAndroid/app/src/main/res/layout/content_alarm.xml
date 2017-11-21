@@ -24,11 +24,11 @@
                 android:text="设置提醒时间"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/button" android:layout_centerVertical="true" android:layout_centerHorizontal="true"/>
+                android:id="@+id/setAlarm" android:layout_centerVertical="true" android:layout_centerHorizontal="true"/>
         <Switch
                 android:text="提醒开关"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:layout_above="@+id/button"
+                android:layout_height="wrap_content" android:layout_above="@+id/setAlarm"
                 android:layout_centerHorizontal="true" android:id="@+id/switch2"/>
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

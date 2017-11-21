@@ -3,7 +3,7 @@
           package="com.github.wangxuxin.personalsmartcup">
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
             android:name=".MySocket"
@@ -43,6 +43,15 @@
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.github.wangxuxin.personalsmartcup.MainActivity"/>
+        </activity>
+        <activity
+                android:name=".SetAlarmActivity"
+                android:label="@string/title_activity_set_alarm"
+                android:parentActivityName=".AlarmActivity"
+                android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.github.wangxuxin.personalsmartcup.AlarmActivity"/>
         </activity>
     </application>
 

@@ -56,7 +56,7 @@ if __name__ == '__main__':
     timeThread.start()
     serialThread = threading.Thread(target=startS())
     serialThread.start()
-    print("SmartHome已启动\n控制台帮助请输入help")
+    print("SmartCup已启动\n控制台帮助请输入help")
     # ----------------------------
 
     # loop
