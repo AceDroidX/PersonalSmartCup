@@ -120,6 +120,7 @@ public class TCPrecv {
                     i++;
                     continue;
                 }
+                
             }
         } else {
             makeToastOnUI("未知程序调用readallrecords", Toast.LENGTH_LONG);

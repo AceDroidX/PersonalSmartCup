@@ -58,6 +58,7 @@ class Serial(object):
     返回值：无
     """
     self.uart.write(s.encode())
+    print('serial--->?',s)
   
   def write_bytes(self, bs, len = 1):
     """
