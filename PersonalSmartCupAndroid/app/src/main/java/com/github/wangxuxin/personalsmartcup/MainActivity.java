@@ -23,6 +23,21 @@ public class MainActivity extends AppCompatActivity {
             stateText.setText("未连接");
         }
 
+        Button alarmButton =(Button)findViewById(R.id.alarmButton);
+        alarmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(MainSocket.isConnected()){
+                    Intent intent = new Intent();
+                    //intent.putExtra("type",type+"/"+l);
+                    intent.setClass(getApplicationContext(), AlarmActivity.class);
+                    startActivity(intent);
+                }else {
+                    Toast.makeText(getApplicationContext(), "未连接！",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
 
         Button historyButton = (Button)findViewById(R.id.historyButton);
         historyButton.setOnClickListener(new View.OnClickListener() {

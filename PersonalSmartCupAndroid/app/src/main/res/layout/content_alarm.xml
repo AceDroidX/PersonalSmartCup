@@ -13,5 +13,22 @@
             android:layout_width="368dp"
             android:layout_height="495dp" tools:layout_editor_absoluteY="8dp" tools:layout_editor_absoluteX="8dp">
 
+        <TextView
+                android:text="喝水提醒"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:layout_above="@+id/switch2" android:layout_centerHorizontal="true"/>
+        <Button
+                android:text="设置提醒时间"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button" android:layout_centerVertical="true" android:layout_centerHorizontal="true"/>
+        <Switch
+                android:text="提醒开关"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:layout_above="@+id/button"
+                android:layout_centerHorizontal="true" android:id="@+id/switch2"/>
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

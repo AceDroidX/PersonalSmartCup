@@ -64,7 +64,7 @@ def stableWater(volume):
     global tmpWeight2
     del tmpWeight[0]
     tmpWeight.append(volume)
-    if max(tmpWeight) - mix(tmpWeight) < 10:
+    if max(tmpWeight) - min(tmpWeight) < 10:
         tmpWeight2 = average(tmpWeight)
         calculateWater()
     pass
@@ -77,14 +77,14 @@ def calculateWater():
     global tmpWater
     global tmpWeight2
     waterWeight = tmpWeight2 - cupWeight
-    if waterWeight < -5:
+    if waterWeight < 30:
         print('水杯已拿走')
         return
-    elif 5 > waterWeight >= -5:
+    elif 50 > waterWeight >= 30:
         waterWeight = 0
     changeWeight = tmpWater - waterWeight
     # do something
-    if changeWeight > 10:
+    if changeWeight > 50:
         SQLite.addDrinkRecords(changeWeight)
         print('add water ?',changeWeight)
     tmpWater = waterWeight

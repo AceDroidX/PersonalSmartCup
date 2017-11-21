@@ -28,7 +28,7 @@ public class TCPSocket {
     Context context = null;
     Activity activity;
     TCPrecv tcprecv;
-    String type = "unknown";
+    String type = "un";
 
     TCPSocket(Activity a, String type) {
         activity = a;
@@ -37,6 +37,9 @@ public class TCPSocket {
         this.out = ((MySocket) activity.getApplication()).getOut();
         this.input = ((MySocket) activity.getApplication()).getInput();
         this.type = type;
+
+        Log.d("wxxDebugA",activity.getClass().getName());
+        Log.d("wxxDebugType",this.type);
     }
 
     TCPSocket(Activity a) {
@@ -45,8 +48,8 @@ public class TCPSocket {
         context = a.getApplicationContext();
     }
 
-    boolean isConnected(){
-        if(client==null){
+    boolean isConnected() {
+        if (client == null) {
             return false;
         }
         //Log.d("wxxDebug","连接状态"+client.isConnected());
@@ -73,22 +76,30 @@ public class TCPSocket {
             out.writeBytes(str);
         } catch (IOException e) {
             e.printStackTrace();
-            activity.runOnUiThread(new Runnable() {
+            try {
+                input.close();
+                out.flush();
+                client.close();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+
+            /*activity.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     Toast.makeText(context.getApplicationContext(), "发送命令错误",
                             Toast.LENGTH_LONG).show();
                 }
-            });
+            });*/
         }
     }
 
     void recv() {
         if (context == null) {
-            tcprecv = new TCPrecv(out, input, client, this, type);
+            tcprecv = new TCPrecv(out, input, client, this, this.type);
             tcprecv.recv();
         } else {
-            tcprecv = new TCPrecv(out, input, client, this, type, activity);
+            tcprecv = new TCPrecv(out, input, client, this, this.type, activity);
             tcprecv.recv();
         }
     }
@@ -99,8 +110,10 @@ public class TCPSocket {
             public void run() {
                 while (true) {
                     try {
-                        sleep(client.getSoTimeout() / 2);
-                        send("keepAlive", client.getSoTimeout());
+                        if (isConnected()) {
+                            sleep(client.getSoTimeout() / 2);
+                            send("keepAlive", client.getSoTimeout());
+                        }
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -150,7 +163,7 @@ public class TCPSocket {
                     recv();
                     //client.close();
                 } catch (Exception e) {
-                    Log.e("socket", e.toString());
+                    e.printStackTrace();
                     activity.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {

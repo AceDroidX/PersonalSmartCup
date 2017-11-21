@@ -1,19 +1,18 @@
 String cdata = "";
 String cmd[100];
 unsigned long previousMillis = 0;
-int isdebug=0;
 
 // 电子秤ADC（HX771AD）对应的引脚号
 const int VT  = 11;
 const int WSCK = 12;
 
-const int light1=2//电热器指示灯
-const int light2=3//红 水是否能喝
-const int light3=4//绿 同上
+const int light1=2;//电热器指示灯
+const int light2=3;//红 水是否能喝
+const int light3=4;//绿 同上
 const int temp1=A3;//杯温
 const int temp2=A4;//水温
 int delaytime=1000;//串口发送间隔时间
-long weight0 = 16739000;//当重量为0时的数值
+long weight0 = 16740001;//当重量为0时的数值
 long weight50 = 10000;//每增加50g数值减少
 
 // 称重函数
@@ -41,7 +40,8 @@ long weight(void){
   return data;
 }
 
-long getweigh(){
+long getweight(){
+  //return weight();
   return (weight0-weight())*50/weight50;
 }
 
@@ -75,6 +75,7 @@ void loop() {
   unsigned long currentMillis = millis();
   if(currentMillis-previousMillis>=delaytime){
     sendSerial();
+    previousMillis=currentMillis;
   }
 
   while (Serial.available() > 0)  
@@ -91,21 +92,23 @@ void loop() {
     i++;
     result = strtok( NULL, delims );
   }
-  if(isdebug&&cmd[0]!=""){
+  if(cmd[0]!=""){
     Serial.println(cmd[0]);
   }
 
   if(cmd[0]=="temp1high"){
-    
+    digitalWrite(light2,LOW);
+    digitalWrite(light3,HIGH);
   }
   if(cmd[0]=="temp1ok"){
-    
+    digitalWrite(light3,LOW);
+    digitalWrite(light2,HIGH);
   }
   if(cmd[0]=="temp2ok"){
-    
+    digitalWrite(light1,LOW);
   }
   if(cmd[0]=="temp2low"){
-    
+    digitalWrite(light1,HIGH);
   }
   
   cleanVar();

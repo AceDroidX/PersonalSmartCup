@@ -26,9 +26,10 @@ def command(netcmd, sock, addr):
         tmp = "readAllRecords "
         for t in SQLite.readAllDrinkRecords():
             for i in t:
-                tmp += i
+                tmp += str(i)
                 tmp += ','
             tmp += ' '
+        tmp += '\n'
         sock.send(tmp.encode('utf-8'))
         print('--->' + addr.__str__() + '>' + tmp)
     elif netcmd[0] == 'readRecords':

@@ -16,7 +16,7 @@ def tcplink(sock, addr):
     port = addr[1]
     while True:
         data = sock.recv(1024)
-        time.sleep(0.1)
+        time.sleep(0.01)
         echo = data.decode('utf-8')
         netcmd = echo.split(' ')
         if echo == '':

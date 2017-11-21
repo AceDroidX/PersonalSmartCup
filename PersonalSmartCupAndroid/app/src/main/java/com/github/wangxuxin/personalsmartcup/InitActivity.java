@@ -31,7 +31,7 @@ public class InitActivity extends AppCompatActivity {
                     return;
                 }
 
-                final TCPSocket keysetSocket = new TCPSocket(InitActivity.this);
+                final TCPSocket keysetSocket = new TCPSocket(InitActivity.this,"init");
                 keysetSocket.send("setkey " + keysetEdit.getText().toString(), 5000);
             }
         });

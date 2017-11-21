@@ -19,9 +19,14 @@
                 android:layout_height="wrap_content" android:id="@+id/textView10"
                 android:textAppearance="@style/TextAppearance.AppCompat" android:gravity="top|center"/>
         <LinearLayout
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:layout_weight="1" android:id="@+id/llhistory">
+                android:layout_height="wrap_content" android:layout_weight="1" android:id="@+id/llhistory"
+                android:gravity="center">
+            <lecho.lib.hellocharts.view.LineChartView
+                    android:id="@+id/historyChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
         </LinearLayout>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
