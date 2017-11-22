@@ -52,7 +52,7 @@ def detectHardware():
         serial.write_string('temp1high')
     else:
         serial.write_string('temp1ok')
-    if temp2 > 60:  # 需要修改 尽量烫
+    if temp2 > 50:  # 需要修改 尽量烫
         serial.write_string('temp2ok')
     else:
         serial.write_string('temp2low')

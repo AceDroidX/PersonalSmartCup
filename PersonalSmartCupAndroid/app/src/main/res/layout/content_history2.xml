@@ -14,7 +14,7 @@
             android:layout_width="368dp"
             android:layout_height="495dp" tools:layout_editor_absoluteY="8dp" tools:layout_editor_absoluteX="8dp">
         <TextView
-                android:text="11月21日历史记录"
+                android:text="11月22日历史记录"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/textView10"
                 android:textAppearance="@style/TextAppearance.AppCompat" android:gravity="top|center"/>
@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content" android:layout_weight="1" android:id="@+id/llhistory"
                 android:gravity="center">
             <lecho.lib.hellocharts.view.LineChartView
-                    android:id="@+id/historyChart"
+                    android:id="@+id/history2Chart"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
         </LinearLayout>

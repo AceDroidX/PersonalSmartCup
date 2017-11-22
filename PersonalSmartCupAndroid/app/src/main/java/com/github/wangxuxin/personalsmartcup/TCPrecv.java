@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 import lecho.lib.hellocharts.gesture.ZoomType;
 import lecho.lib.hellocharts.model.Axis;
@@ -53,8 +52,8 @@ public class TCPrecv {
 
         context = a.getApplicationContext();
         view = a.getWindow().getDecorView();
-        Log.d("wxxDebugR",activity.getClass().getName());
-        Log.d("wxxDebugTypeRecv",this.type);
+        Log.d("wxxDebugR", activity.getClass().getName());
+        Log.d("wxxDebugTypeRecv", this.type);
     }
 
     private void makeToastOnUI(final String str, final int i) {
@@ -114,7 +113,7 @@ public class TCPrecv {
                 } else if ("readAllRecords".equals(cmd[0])) {
                     readAllRecords();
                 } else {
-                    Log.d("wxxDebug", "未知数据类型"+ cmd[0]);
+                    Log.d("wxxDebug", "未知数据类型" + cmd[0]);
                 }
 
                 cmd = new String[]{"unknown", "unknown"};
@@ -126,38 +125,10 @@ public class TCPrecv {
     }
 
     void readAllRecords() {
-        if ("history".equals(type)) {
-            LinearLayout llhistory = (LinearLayout) activity.findViewById(R.id.llhistory);
-            ArrayList values;
-            ArrayList lines;
-            LineChartView historyChart = (LineChartView) activity.findViewById(R.id.historyChart);
-            values = new ArrayList<PointValue>();//折线上的点
-            int i = 0;
-            for (String str : cmd) {
-                if (i == 0) {
-                    i++;
-                    continue;
-                }
-                String[] text = str.split(",");
-                values.add(new PointValue(Float.parseFloat(text[0]), Float.parseFloat(text[1])));
-            }
-            Line line = new Line(values).setColor(Color.BLUE);//声明线并设置颜色
-            line.setCubic(true);//设置是平滑的还是直的
-            lines = new ArrayList<Line>();
-            lines.add(line);
 
-            historyChart.setInteractive(true);//设置图表是可以交互的（拖拽，缩放等效果的前提）
-            historyChart.setZoomType(ZoomType.HORIZONTAL_AND_VERTICAL);//设置缩放方向
-            LineChartData data = new LineChartData();
-            Axis axisX = new Axis();//x轴
-            Axis axisY = new Axis();//y轴
-            data.setAxisXBottom(axisX);
-            data.setAxisYLeft(axisY);
-            data.setLines(lines);
-            historyChart.setLineChartData(data);//给图表设置数据
-        } else {
-            makeToastOnUI("未知程序调用readallrecords" + type, Toast.LENGTH_LONG);
-        }
+//        } else {
+//            makeToastOnUI("未知程序调用readallrecords" + type, Toast.LENGTH_LONG);
+//        }
     }
 
     void verifyType() {

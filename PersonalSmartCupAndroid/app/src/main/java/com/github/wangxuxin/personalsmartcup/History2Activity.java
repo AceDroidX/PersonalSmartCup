@@ -18,30 +18,27 @@ import lecho.lib.hellocharts.view.LineChartView;
 
 import java.util.ArrayList;
 
-public class HistoryActivity extends AppCompatActivity {
+public class History2Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_history);
+        setContentView(R.layout.activity_history2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        final TCPSocket historySocket = new TCPSocket(HistoryActivity.this, "history");
-        historySocket.send("readAllRecords", 5000);
-
         //if ("history".equals(type)) {
         LinearLayout llhistory = (LinearLayout) findViewById(R.id.llhistory);
         ArrayList<PointValue> values;
         ArrayList<Line> lines;
-        LineChartView historyChart =(LineChartView)findViewById(R.id.historyChart);
+        LineChartView historyChart =(LineChartView)findViewById(R.id.history2Chart);
         values = new ArrayList<PointValue>();//折线上的点
-        values.add(new PointValue(1,127));
-        values.add(new PointValue(2,243));
+        values.add(new PointValue(1,327));
+        values.add(new PointValue(2,452));
         values.add(new PointValue(3,145));
-        values.add(new PointValue(4,345));
+        values.add(new PointValue(4,271));
             /*int i = 0;
             for (String str : cmd) {
                 if (i == 0) {
@@ -67,13 +64,13 @@ public class HistoryActivity extends AppCompatActivity {
         data.setLines(lines);
         historyChart.setLineChartData(data);//给图表设置数据
 
-        FloatingActionButton fab1=(FloatingActionButton)findViewById(R.id.fab1);
-        fab1.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton fab2=(FloatingActionButton)findViewById(R.id.fab2);
+        fab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
                 //intent.putExtra("type",type+"/"+l);
-                intent.setClass(getApplicationContext(), History2Activity.class);
+                intent.setClass(getApplicationContext(), HistoryActivity.class);
                 startActivity(intent);
             }
         });

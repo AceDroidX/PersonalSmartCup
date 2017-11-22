@@ -8,7 +8,7 @@
     <application
             android:name=".MySocket"
             android:allowBackup="true"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@mipmap/t5"
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
@@ -52,6 +52,15 @@
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.github.wangxuxin.personalsmartcup.AlarmActivity"/>
+        </activity>
+        <activity
+                android:name=".History2Activity"
+                android:label="@string/title_activity_history2"
+                android:parentActivityName=".MainActivity"
+                android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.github.wangxuxin.personalsmartcup.MainActivity"/>
         </activity>
     </application>
 

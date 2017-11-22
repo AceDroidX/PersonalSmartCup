@@ -25,30 +25,30 @@
                 android:layout_height="wrap_content" android:id="@+id/textView8"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textSize="24sp"
-                android:layout_below="@+id/textView7" android:layout_toStartOf="@+id/editText2"
-                android:layout_alignBottom="@+id/editText2" android:gravity="center"/>
+                android:layout_below="@+id/textView7" android:layout_toStartOf="@+id/minEdit"
+                android:layout_alignBottom="@+id/minEdit" android:gravity="center"/>
         <EditText
                 android:layout_width="47dp"
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:ems="10"
-                android:id="@+id/editText2" android:hint="min"
+                android:id="@+id/minEdit" android:hint="min"
                 android:layout_below="@+id/textView7" android:layout_toStartOf="@+id/textView9"
-                android:layout_alignBottom="@+id/editText" android:gravity="center"
+                android:layout_alignBottom="@+id/secEdit" android:gravity="center"
                 style="@style/Base.TextAppearance.AppCompat.Small"/>
         <TextView
                 android:text="分"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/textView9" android:layout_weight="0.02"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1" android:textSize="24sp"
-                android:layout_below="@+id/textView7" android:layout_toStartOf="@+id/editText"
-                android:layout_alignBottom="@+id/editText2" android:gravity="center"/>
+                android:layout_below="@+id/textView7" android:layout_toStartOf="@+id/secEdit"
+                android:layout_alignBottom="@+id/minEdit" android:gravity="center"/>
         <EditText
                 android:layout_width="44dp"
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:ems="10"
-                android:id="@+id/editText"
+                android:id="@+id/secEdit"
                 android:hint="sec" android:layout_below="@+id/textView7" android:layout_centerHorizontal="true"
                 android:gravity="center" style="@style/Base.TextAppearance.AppCompat.Medium"/>
         <TextView
@@ -57,17 +57,17 @@
                 android:layout_height="wrap_content" android:id="@+id/textView11" android:layout_weight="0.12"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textSize="24sp"
-                android:layout_below="@+id/textView7" android:layout_toEndOf="@+id/editText" android:gravity="center"
-                android:layout_alignBottom="@+id/editText"/>
+                android:layout_below="@+id/textView7" android:layout_toEndOf="@+id/secEdit" android:gravity="center"
+                android:layout_alignBottom="@+id/secEdit"/>
         <Button
                 android:text="设置"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:layout_below="@+id/textView8"
-                android:layout_alignStart="@+id/textView8" android:id="@+id/button"/>
+                android:layout_alignStart="@+id/textView8" android:id="@+id/setButton"/>
         <Button
-                android:text="取消"
+                android:text="关闭"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:layout_below="@+id/textView11"
-                android:layout_alignEnd="@+id/textView11" android:id="@+id/button2"/>
+                android:layout_alignEnd="@+id/textView11" android:id="@+id/cancelButton"/>
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
